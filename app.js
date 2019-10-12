@@ -1,7 +1,17 @@
 const express = require('express')
+const session = require('express-session')
 const path = require('path')
 const favicon = require('serve-favicon')
 const app = express()
+
+let sessionOptions = session({
+    secret: process.env.EXPRESS_SESSION_SECRET,
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 86400000, httpOnly: true }
+})
+
+app.use(sessionOptions)
 
 const router = require('./router')
 
