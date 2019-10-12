@@ -1,5 +1,16 @@
 const User = require('../models/User')
 
+exports.isLoggedIn = (req, res, next) => {
+    if (req.session.user) {
+        next()
+    } else {
+        req.flash("errors", "You must be logged in to perform that action")
+        req.session.save(() => {
+            res.redirect('/')
+        })
+    }
+}
+
 exports.login = (req, res) => {
     let user = new User(req.body)
     user.login().then(() => {
@@ -41,7 +52,7 @@ exports.register = (req, res) => {
 
 exports.home = (req, res) => {
     if (req.session.user) {
-        res.render("home-dashboard", {username: req.session.user.username})
+        res.render("home-dashboard")
     } else {
         res.render("home-guest", { errors: req.flash('errors'), regErrors: req.flash('regErrors')} )
     }
