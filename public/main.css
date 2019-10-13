@@ -32,42 +32,13 @@ a:hover {
   top: 3px;
 }
 
-/* .header-bar h4 a:hover,
-.header-search-icon:hover,
-.header-profile-icon:hover {
-  text-decoration: none;
-} */
-
 .header-chat-icon {
   cursor: pointer;
   position: relative;
   top: 3px;
 }
 
-/* .avatar-small {
-  width: 32px;
-  height: 32px;
-  border-radius: 16px;
-  margin-right: 5px;
-  position: relative;
-  top: -3px;
-}
-
-.avatar-tiny {
-  width: 24px;
-  height: 24px;
-  border-radius: 12px;
-  margin-right: 4px;
-  position: relative;
-  top: -1px;
-} */
-
-/* .form-control-title {
-  font-size: 2rem;
-  font-weight: 500;
-}
-
-.body-content {
+/* .body-content {
   font-size: 1.2rem;
   line-height: 1.75;
   color: #292929;
@@ -98,6 +69,12 @@ a:hover {
 .input-dark::-moz-placeholder {color: #888;}
 .input-dark:-ms-input-placeholder {color: #888;}
 .input-dark:-moz-placeholder {color: #888;}
+
+@media (min-width: 768px) {
+  .input-dark {
+    width: auto;
+  }
+}
 
 .display-3 {
   font-size: 4.35rem;
