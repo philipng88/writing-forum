@@ -51,4 +51,35 @@ Post.prototype.create = function() {
     })
 }
 
+Post.findSingleById = id => {
+    return new Promise(async (resolve, reject) => {
+        if (typeof(id) !== "string" || !ObjectID.isValid(id)) {
+            reject()
+            return
+        }
+        let posts = await postsCollection.aggregate([
+            {$match: {_id: new ObjectID(id)}},
+            {$lookup: {from: "users", localField: "author", foreignField: "_id", as: "authorDocument"}},
+            {$project: {
+                title: 1, 
+                body: 1, 
+                createdDate: 1, 
+                author: {$arrayElemAt: ["$authorDocument", 0]}
+            }} 
+        ]).toArray()
+
+        // clean up author property in each post object
+        posts = posts.map(post => {
+            post.author = {username: post.author.username}
+            return post
+        })
+
+        if (posts.length) {
+            resolve(posts[0])
+        } else {
+            reject()
+        }
+    })
+}
+
 module.exports = Post
