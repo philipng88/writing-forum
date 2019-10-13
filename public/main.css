@@ -12,6 +12,12 @@ body,
 }
 
 .header-search-icon,
+.header-profile-icon,
+.header-chat-icon {
+  font-size: 1.1em;
+}
+
+.header-search-icon,
 .header-profile-icon {
   position: relative;
   top: 3px;
@@ -47,7 +53,7 @@ body,
   top: -1px;
 }
 
-.form-control-title {
+/* .form-control-title {
   font-size: 2rem;
   font-weight: 500;
 }
@@ -56,7 +62,7 @@ body,
   font-size: 1.2rem;
   line-height: 1.75;
   color: #292929;
-}
+} */
 
 .body-content p,
 .body-content ul,

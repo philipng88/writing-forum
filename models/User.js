@@ -8,15 +8,15 @@ const User = function(data) {
 }
 
 User.prototype.cleanUp = function() {
-    if (typeof(this.data.username) != "string") {
+    if (typeof(this.data.username) !== "string") {
         this.data.username = ""
     }
 
-    if (typeof(this.data.email) != "string") {
+    if (typeof(this.data.email) !== "string") {
         this.data.email = ""
     }
 
-    if (typeof(this.data.password) != "string") {
+    if (typeof(this.data.password) !== "string") {
         this.data.password = ""
     }
 
@@ -29,11 +29,11 @@ User.prototype.cleanUp = function() {
 
 User.prototype.validate = function() {
     return new Promise(async (resolve, reject) => {
-        if (this.data.username == "") {
+        if (this.data.username === "") {
             this.errors.push("ERROR: You must provide a username")
         }
     
-        if (this.data.username != "" && !validator.isAlphanumeric(this.data.username)) {
+        if (this.data.username !== "" && !validator.isAlphanumeric(this.data.username)) {
             this.errors.push("ERROR: Username can only contain letters and numbers")
         }
     
@@ -41,7 +41,7 @@ User.prototype.validate = function() {
             this.errors.push("ERROR: You must provide a valid email address")
         }
     
-        if (this.data.password == "") {
+        if (this.data.password === "") {
             this.errors.push("ERROR: You must set a password")
         }
     

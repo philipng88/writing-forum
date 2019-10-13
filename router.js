@@ -11,5 +11,6 @@ router.post('/logout', userController.logout)
 
 // post routes
 router.get('/create-post', userController.isLoggedIn, postController.viewCreateScreen)
+router.post('/create-post', userController.isLoggedIn, postController.create)
 
 module.exports = router 
