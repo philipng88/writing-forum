@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const session = require('express-session')
 const MongoStore = require('connect-mongo')(session)
@@ -7,19 +8,20 @@ const favicon = require('serve-favicon')
 const app = express()
 
 let sessionOptions = session({
-    secret: process.env.EXPRESS_SESSION_SECRET,
-    store: new MongoStore({ client: require('./db') }),
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 86400000, httpOnly: true }
+  secret: process.env.EXPRESS_SESSION_SECRET,
+  store: new MongoStore({client: require('./db')}),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 1000 * 60 * 60 * 24, httpOnly: true}
 })
 
 app.use(sessionOptions)
 app.use(flash())
 
-app.use((req, res, next) => {
-    res.locals.user = req.session.user
-    next()
+app.use(function(req, res, next) {
+  if (req.session.user) {req.visitorId = req.session.user._id} else {req.visitorId = 0}  
+  res.locals.user = req.session.user
+  next()
 })
 
 const router = require('./router')
