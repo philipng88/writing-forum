@@ -72,4 +72,22 @@ Follow.isVisitorFollowing = async function(followedId, visitorId) {
     }
 }
 
+Follow.getFollowersById = function(id) {
+    return new Promise(async (resolve, reject) => {
+        try {
+            let followers = await followsCollection.aggregate([
+                {$match: {followedId: id}},
+                {$lookup: {from: "users", localField: "authorId", foreignField: "_id", as: "userDoc"}},
+                {$project: {username: {$arrayElemAt: ["$userDoc.username", 0]}}}
+            ]).toArray()
+            followers = followers.map(function(follower) {
+                return {username: follower.username}
+            })
+            resolve(followers)
+        } catch {
+            reject()
+        }
+    })
+}
+
 module.exports = Follow
