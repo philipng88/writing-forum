@@ -22,6 +22,7 @@
             <a href="/profile/<%= user.username %>" class="text-white mr-2 header-profile-icon" title="My Profile (<%= user.username %>)" data-toggle="tooltip" data-placement="bottom"><i class="fas fa-user"></i></a>
             <a class="btn btn-sm btn-success mr-2" href="/create-post">Create Post</a>
             <form action="/logout" method="POST" class="d-inline">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <button class="btn btn-sm btn-secondary">Sign Out</button>
             </form>
           </div>
@@ -35,6 +36,7 @@
               <input name="password" class="form-control form-control-sm input-dark" type="password" placeholder="Password">
             </div>
             <div class="col-md-auto">
+              <input type="hidden" name="_csrf" value="<%= csrfToken %>">
               <button class="btn btn-primary btn-sm">Sign In</button>
             </div>
           </div>
