@@ -91,6 +91,7 @@ exports.ifUserExists = function(req, res, next) {
 exports.profilePostsScreen = function(req, res) {
   Post.findByAuthorId(req.profileUser._id).then(function(posts) {
     res.render('profile', {
+      title: req.profileUser.username,
       currentPage: "posts",
       posts: posts,
       profileUsername: req.profileUser.username,
