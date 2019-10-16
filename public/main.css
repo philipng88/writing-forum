@@ -412,15 +412,15 @@ textarea.tall-textarea {
   margin-bottom: 7px;
 }
 
-.chat-self {
+.chat-other {
   padding-left: 25%;
 }
 
-.chat-self .chat-avatar {
+.chat-other .chat-avatar {
   margin-left: 6px;
 }
 
-.chat-self .chat-message {
+.chat-other .chat-message {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -432,23 +432,22 @@ textarea.tall-textarea {
           justify-content: flex-end;
 }
 
-.chat-self .chat-message-inner {
+.chat-other .chat-message-inner {
   text-align: right;
   padding: 4px 7px;
   border-radius: 12px;
-  background-color: #007bff;
-  color: #FFF;
+  background-color: #f1f0f0;
 }
 
-.chat-other {
+.chat-self {
   padding-right: 25%;
 }
 
-.chat-other .chat-avatar {
+.chat-self .chat-avatar {
   margin-right: 6px;
 }
 
-.chat-other .chat-message {
+.chat-self .chat-message {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -460,10 +459,11 @@ textarea.tall-textarea {
           justify-content: flex-start;
 }
 
-.chat-other .chat-message-inner {
+.chat-self .chat-message-inner {
   padding: 4px 7px;
   border-radius: 12px;
-  background-color: #f1f0f0;
+  background-color: #007bff;
+  color: #FFF;
 }
 
 .chat-message a {
